@@ -7,8 +7,13 @@ app.use(express.static('public'));
 
 app.use(function(req,res,next){
     console.log('Logging...');
-    //next();
-})
+    next();
+});
+
+app.use(function(req,res,next){
+    console.log('Authenticating..');
+    next();
+});
 
 const courses = [
     {id:1, name:'Course 1'},
