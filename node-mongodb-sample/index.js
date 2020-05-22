@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/playground')
+mongoose.connect('mongodb://localhost:27017/playground', {useNewUrlParser: true})
     .then(() => console.log('Connected to MongoDB...'))
     .catch(err => console.error('Could not connect to MongoDB...',err));
 
@@ -25,4 +25,12 @@ async function createCourse(){
     console.log(result);
 }
 
-createCourse();
+//createCourse();
+
+async function getCourses(){
+    const Course = mongoose.model('Course',courseSchema);
+    const courses = await Course.find({name: 'Node.js Course',isPublished:true});
+    console.log(courses);
+}
+
+getCourses();
