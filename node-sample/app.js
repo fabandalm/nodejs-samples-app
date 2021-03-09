@@ -3,3 +3,6 @@ function sayHello(){
 }
 
 sayHello();
+
+globalThis.console.log("Hello");
+
